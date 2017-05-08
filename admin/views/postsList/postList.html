@@ -1,0 +1,48 @@
+<div class="view-wrapper">
+    <md-input-container md-no-float class="md-block">
+        <md-button ui-sref="post" class="float-right">
+            <div layout="row">
+                <span flex>Add New Post</span>
+            </div>
+        </md-button>
+    </md-input-container>
+
+
+    <md-input-container md-no-float class="md-block">
+        <input ng-model="searchText" placeholder="Search Posts">
+    </md-input-container>
+
+
+    <ul class="post-list">
+        <li class="post-list__item block-element" ng-repeat="posty in postsList | filter:searchText">
+            <div class="row">
+                <div class="col-12 ">
+                    <img src="./img/image.jpg" alt="">
+                </div>
+                <div class="col-12">
+                    <a href="" ui-sref="post({id: posty._id})">
+                        <span class="h5">{{ posty.title }}</span>
+                    </a>
+                    <p>{{ posty.content | limitTo: 250 | NoHtml}}</p>
+                    <div>
+                        <md-button>
+                            <div layout="row">
+                                <span flex>Read</span>
+                            </div>
+                        </md-button>
+
+                        <md-button ui-sref="post({id: posty._id})">
+                            <div layout="row">
+                                <span flex>Edit</span>
+                            </div>
+                        </md-button>
+                        <span ng-if="posty.public == ulue">public</span>
+                        <span ng-if="posty.public != ulue">private</span>
+                        <span>{{posty.createdAt | date}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>

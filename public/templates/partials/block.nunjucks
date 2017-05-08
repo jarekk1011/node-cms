@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="gallery">
+        {% for post in posts %}
+            {% if loop.first  %}
+            {% else %}
+
+                <div class="gallery__item">
+                    <img src="./img/image.jpg" alt="Image">
+                    <div><a href="./lifestyle">Photodiary</a></div>
+                    <h2><a href="./post/{{ post.slug }}">{{ post.title }}</a></h2>
+                    {{post.content | safe | truncate(300)}}
+                </div>
+                
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<header class="header align-self-end">
+    <div class="header-container align-self-center">
+        <div class="header-icons">
+            <md-button aria-label="Notifications" class="header-icons__button">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </md-button>
+            <md-button aria-label="Chat" class="header-icons__button" ng-click="$parent.toggleRight()">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            </md-button>
+            <md-menu class="user-thumb" md-position-mode="target-right bottom">
+                <md-button aria-label="Open" class="md-icon-button" ng-click="$mdMenu.open();">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <a class="md-button md-ink-ripple" aria-label="Profile" ui-sref="profile">
+                            <div layout="row">
+                                <p flex><i class="fa fa-id-card-o" aria-hidden="true"></i>Profile</p>
+                            </div>
+                        </a>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <a class="md-button md-ink-ripple" aria-label="Logout" ng-click="$ctrl.UserService.logout()">
+                            <div layout="row" flex>
+                                <p flex><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</p>
+                            </div>
+                        </a>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+</header>

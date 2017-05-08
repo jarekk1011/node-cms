@@ -1,0 +1,26 @@
+{% include '../header/header.nunjucks' %}
+
+<section class="top-post">
+  <div class="container">
+    <!-- <div class="latest-post"> -->
+      <header class="top-post__img">
+        <img src="./img/image.jpg" alt="Image">
+      </header>
+      <div class="top-post__main">
+        <span class="h4 category">Photodiary</span>
+        <h2 class="top-post-title"><a href="./post/{{posts[0].slug}}">{{ posts[0].title }}</a></h2>
+        <div class="top-post-text">
+         {{ posts[0].content | safe }}
+        </div>
+      </div>
+      <div class="leave-comment">
+        <a class="h4" href="#">Leave a comment</a>
+      </div>
+    <!-- </div> -->
+  </div>
+</section>
+<section>
+  {% include '../partials/block.nunjucks' %}
+</section>
+
+{% include '../footer/footer.nunjucks' %}

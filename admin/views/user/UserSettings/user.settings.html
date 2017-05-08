@@ -1,0 +1,32 @@
+<section layout="column" layout-padding ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ memberinfo.name }}</span>
+                        <span class="md-subhead">{{ memberinfo.email }}</span>
+                        <span class="md-subhead">{{ memberinfo.role }}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media">
+                            <!-- <img flow-img="$flow.files[0]" /> -->
+                            <!-- <md-button ng-if="$flow.files[0]" ng-click="uploadPhoto($flow)">Accept</md-button> -->
+                            <!-- {{$flow.files[0]}} -->
+
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <!-- <form id = "uploadForm" class="" action="/api/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="userPhoto" />
+            <input type="submit" value="Upload Image" name="submit">
+          </form> -->
+                    <!-- <md-button flow-btn>Add Image</md-button> -->
+                    <input flow-btn type="file" name="" style="display:none;">
+                    <!-- <span flow-btn>Upload File</span> -->
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</section>

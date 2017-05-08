@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta property="og:locale" content="pl_PL"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Portal Psy.pl - Rasy psów, porady i ciekawostki - mamy nosa!"/>
+    <meta property="og:description" content="Kochasz psy? To Twoje miejsce w sieci! Wielka księga ras, porady o zdrowiu i wychowaniu psa, ciekawostki z psiego świata, najlepsze z sieci i wiele więcej!"/>
+    <meta property="og:url" content="https://www.psy.pl/"/>
+    <meta property="og:site_name" content="PSY.pl - portal o psach"/>
+    <meta property="og:image" content="https://www.psy.pl/wp-content/uploads/2017/02/1200x628.jpg"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="Kochasz psy? To Twoje miejsce w sieci! Wielka księga ras, porady o zdrowiu i wychowaniu psa, ciekawostki z psiego świata, najlepsze z sieci i wiele więcej!"/>
+    <meta name="twitter:title" content="Portal Psy.pl - Rasy psów, porady i ciekawostki - mamy nosa!"/>
+    <meta name="twitter:image" content="https://www.psy.pl/wp-content/uploads/2017/02/1200x628.jpg"/>
+    {#canonical URLs#}
+     {#<title>{{ PageTitle }}</title>#}
+    {#<meta name="keywords" content="{{ keywords }}">#}
+    {#<meta name="description" content="{{ description }}">#}
+    <link rel="stylesheet" href="{{ url }}/style/app.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class=" col-md-2 align-self-start align-self-center">
+            <h1><a href="{{url}}">MINIMO</a></h1>
+          </div>
+          <nav class="col-md-10 align-self-end align-self-center text-right">
+            <ul>
+              <li><a href="{{url}}/lifestyle">Lifestyle</a></li>
+              <li><a href="{{url}}/photodiary">Photodiary</a></li>
+              <li><a href="{{url}}/music">Music</a></li>
+              <li><a href="{{url}}/travel">Travel</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>

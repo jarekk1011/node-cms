@@ -1,0 +1,43 @@
+.dashboard {
+    .container-fluid {
+        padding: 0;
+    }
+    &__card {
+        height: 175px;
+        border: 1px solid #d7e0f1;
+        span {
+            font-family: $raleway;
+            font-size: 16px;
+        }
+        &__number {
+            display: block;
+            font-weight: 700;
+            font-size: 21px!important;
+        }
+        &__border {
+            height: 25px;
+        }
+    }
+}
+
+.card-body {
+    height: 150px;
+    background-color: $white;
+    padding: 40px 15px 40px 15px;
+}
+
+.color-blue {
+    color: $darkblue;
+}
+
+.color-yellow {
+    color: $yellow;
+}
+
+.color-green {
+    color: $green;
+}
+
+.color-red {
+    color: $red;
+}

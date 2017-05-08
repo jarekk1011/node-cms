@@ -1,0 +1,47 @@
+<div class="d-flex view-wrapper chat-view">
+  <aside class="col-4 col-xl-2 users">
+    <!-- chat -->
+    <header class="users__header">
+      <div class="row">
+        <div class="col">
+          <button class="new" type="button" name="button">NEW</button>
+        </div>
+      </div>
+    </header>
+
+    <ul class="users__list">
+      <li class="users__list__item" ng-repeat="user in users">
+        <button type="button" name="button">
+          <span ng-if="user.name">{{user.name}}</span>
+          <span ng-if="!user.name">{{user.google.name}}</span>
+        </button>
+      </li>
+    </ul>
+
+  </aside>
+
+  <section class="col-8 col-xl-10 chat" ng-cloak>
+
+    <!-- <div> -->
+    <header class="chat__header">
+      <span class="h4">Jan Kowalski</span>
+    </header>
+    <ul class="chat__main" scroll-glue>
+      <li ng-repeat="message in messages">
+        <div>
+          <h4>{{message.name}}</h4>
+          <p>{{message.message}}</p>
+          <p>{{message.date | date:'shortTime'}}</p>
+        </div>
+      </li>
+    </ul>
+    <footer class="chat__footer">
+      <form class="" ng-submit="chat.sendMessage()">
+        <!-- <div class=""> -->
+          <input type="text" ng-model="messageTo" aria-label="Message" placeholder="Message...">
+          <button class="send" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <!-- </div> -->
+      </form>
+    </footer>
+  </section>
+</div>

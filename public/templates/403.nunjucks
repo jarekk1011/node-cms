@@ -1,0 +1,4 @@
+{% include 'partials/error-header.nunjucks' %}
+  <h1>403</h1>
+  <h2>You are not authorized</h2>
+{% include 'partials/error-footer.nunjucks' %}

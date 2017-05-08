@@ -1,0 +1,24 @@
+<md-sidenav class="md-sidenav-right chat-aside" md-component-id="right" md-disable-backdrop>
+    <md-menu-content width="3">
+        <md-menu-item ng-repeat="user in users | filter:searchText">
+            <md-button aria-label="user.name" aria-hidden="true">
+                <div class="row no-gutters">
+                    <div class="col-1">
+                        <img ng-if="user.image" src="" alt="">
+                        <i ng-if="!user.image" class="user-icon fa fa-user-circle-o" ng-class="{'is--active' : user.isActive == true}" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-10">
+                        <span>{{ user.name }}</span>
+                    </div>
+                    <div class="col-1">
+                        <span class="user-active-info"></span>
+                    </div>
+                </div>
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+    <div class="chat-search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input ng-model="searchText" type="search">
+    </div>
+</md-sidenav>

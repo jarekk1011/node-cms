@@ -1,0 +1,19 @@
+<section class="login-section">
+  <div class="login">
+    <form name="loginForm" class="" ng-submit="loginS()" method="post">
+      <md-input-container md-no-float class="md-block">
+        <input type="email" ng-model="user.email" placeholder="Email" ng-required="true">
+      </md-input-container>
+      <md-input-container md-no-float class="md-block">
+        <input type="password" placeholder="Password" ng-model="user.password" ng-required="true">
+      </md-input-container>
+      <div class="">
+        <md-button type="submit" class="md-raised login-submit">Login</md-button>
+      </div>
+      <div>
+        <md-button type="button" ng-click="google()" class="md-raised login-submit login-google"><span class="fa fa-2x fa-google"></span> Login with Google</md-button>
+      </div>
+      <span class="register-link">Not registered? <a href="" ui-sref="register">Create an accout</a></span>
+    </form>
+  </div>
+</section>

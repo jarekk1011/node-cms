@@ -1,0 +1,62 @@
+body.is--login {
+    background-color: $blue;
+    .view {
+        height: 100%;
+    }
+}
+
+.login-google {
+    background-color: #cf4332!important;
+    margin-top: 24px!important;
+    span {
+        position: relative;
+        top: 4px;
+        left: -10px;
+    }
+}
+
+.login,
+.register {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 50px;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .26);
+    md-input-container {
+        margin: 0;
+    }
+    input {
+        background-color: $backgroud;
+        height: 50px;
+        border: 0;
+        padding: 5px;
+        padding-bottom: 0;
+        padding-left: 15px;
+    }
+    .login-submit {
+        width: 100%;
+        margin: 0;
+        background-color: darken($blue, 5);
+        color: $white;
+        border-radius: 0;
+        height: 50px;
+        &.md-button.md-raised:not([disabled]):hover {
+            background-color: darken($blue, 5);
+        }
+    }
+    .register-link {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 20px;
+        a {
+            color: $blue;
+        }
+    }
+}

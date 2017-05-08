@@ -1,0 +1,4 @@
+{% include 'partials/error-header.nunjucks' %}
+<h1>404</h1>
+<h2>Page does not exists</h2>
+{% include 'partials/error-footer.nunjucks' %}

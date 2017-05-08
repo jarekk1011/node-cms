@@ -1,0 +1,23 @@
+<section class="register" layout="column" layout-padding ng-cloak>
+  <form name="registerForm" method="post">
+
+    <md-input-container md-no-float class="md-block">
+      <input ng-model="user.name"  placeholder="Name" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <input type="email" ng-model="user.email" placeholder="Email" ng-required="true">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <input type="password" ng-model="user.password" placeholder="Password" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <input type="password" ng-model="user.password2" placeholder="Conform Password" ng-required="true">
+    </md-input-container>
+
+    <div class="">
+      <md-button ng-click="signup()" aria-label="Register" class="md-raised login-submit">Register</md-button>
+    </div>
+    <span class="register-link">Already registered? <a href="" ui-sref="login">Back to login page</a></span>
+  </form>
+</section>

@@ -1,0 +1,27 @@
+.user-active-info {
+    background-color: #c0c5ce;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    align-self: center;
+}
+
+.user-active-info.is--active {
+    background-color: #6fc041;
+}
+
+.chat-aside {
+    .md-button {
+        padding-left: 10px!important;
+        .user-icon {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        .user-image {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+    }
+}

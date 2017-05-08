@@ -1,0 +1,31 @@
+.header {
+    background-color: #3f51b5;
+    color: #fff;
+    height: 55px;
+    width: calc(100% - 220px);
+    // float: right;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.header-container {
+    height: 100%;
+}
+
+.header-icons {
+    height: 100%;
+    float: right;
+    button {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+}
+
+.user-thumb {
+    i {
+        font-size: 24px;
+    }
+}
