@@ -4,31 +4,9 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
 var User = require('../models/user');
-var config = require('./database'); // get db config file
-
 var configAuth = require('./auth');
 
-// console.log(User);
-// module.exports = function(passport) {
-//   var opts = {};
-//   opts.secretOrKey = config.secret;
-//   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-//     User.findOne({id: jwt_payload.id}, function(err, user) {
-//           if (err) {
-//               return done(err, false);
-//           }
-//           if (user) {
-//               done(null, user);
-//           } else {
-//               done(null, false);
-//           }
-//       });
-//   }));
-// };
-
-// module.exports = function(passport) {
 passport.serializeUser((user, done) => {
-    // console.log(user);
     done(null, user.id);
 });
 
@@ -43,8 +21,6 @@ passport.use(new LocalStrategy({
     session: true,
     passReqToCallback: true,
 }, (req, email, password, done) => {
-    // console.log(email);
-
     User.findOne({ email: email.toLowerCase() }, (err, user) => {
         if (err) { return done(err); }
         if (!user) {
@@ -128,10 +104,6 @@ exports.isAuthenticated = (req, res, next) => {
     res.json({ authentication: true });
 };
 
-// exports.auth = (req, res, next) => {
-//   // console.log(req.session);
-// };
-
 /**
  * Authorization Required middleware.
  */
@@ -142,6 +114,5 @@ exports.isAuthorized = (req, res, next) => {
         next();
     } else {
         res.json({ authentication: true });
-        // res.redirect(`/auth/${provider}`);
     }
 };

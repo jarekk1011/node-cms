@@ -5,20 +5,18 @@ const crypto = require('crypto');
 
 // set up a mongoose model
 const userSchema = new mongoose.Schema({
-    // user_id: { type: Number, ref: 'User' },
     name: {
         type: String,
         // required: true
     },
     password: {
         type: String,
-        // required: true
     },
     email: {
         type: String,
         lowercase: true,
         unique: true,
-        // required: true
+        required: true
     },
     role: {
         type: String,
@@ -28,8 +26,6 @@ const userSchema = new mongoose.Schema({
     google: {
         id: String,
         token: String,
-        // email: String,
-        // name: String
     },
     isActive: Boolean,
     image: String

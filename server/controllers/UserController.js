@@ -1,6 +1,5 @@
 'use strict'
 const User = require('../models/user');
-// const jwt       = require('jsonwebtoken');
 const passport = require('passport');
 var mongoose = require('mongoose');
 
@@ -12,16 +11,10 @@ exports.create = function(req, res, next) {
     req.sanitize('email').normalizeEmail({ remove_dots: false });
 
     const errors = req.validationErrors();
-
-    // console.log(req.flash().errors);
-
     if (errors) {
-        // console.log(errors);
         req.flash('errors', errors);
         return res.json(errors);
     }
-    // console.log(User);
-
     const user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -53,48 +46,6 @@ exports.create = function(req, res, next) {
         });
     });
 };
-
-// exports.read = function(req, res) {
-//   getToken = function (headers) {
-//     if (headers && headers.authorization) {
-//       var parted = headers.authorization.split(' ');
-//       if (parted.length === 2) {
-//         return parted[1];
-//       } else {
-//         return null;
-//       }
-//     } else {
-//       return null;
-//     }
-//   };
-//   console.log('dupa')
-//   var token = getToken(req.headers);
-//   // console.log(token);
-//
-//   passport.authenticate('local', (err, user, info) => {
-//
-//   });
-//   if (token) {
-//     var decoded = jwt.verify(token, config.secret);
-//     // console.log(decoded);
-//     UserModel.findOne({
-//       email: decoded.user.email
-//     }, function(err, user) {
-//         if (err) throw err;
-//
-//         if (!user) {
-//           return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
-//         } else {
-//
-//           MessageModel.find({public: true}, function(err,data){
-//             res.json({success: true, user:user, data: data});
-//           });
-//         }
-//     });
-//   } else {
-//     return res.status(403).send({success: false, msg: 'No token provided.'});
-//   }
-// };
 
 exports.postLogin = function(req, res, next) {
     // console.log(req.session);

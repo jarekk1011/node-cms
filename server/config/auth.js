@@ -1,8 +1,14 @@
+let callbackURL
+
+if (process.env.NODE_ENV === 'production') {
+    callbackURL = process.env.CALLBACK_URL_PRODUCTION;
+} else {
+    callbackURL = process.env.CALLBACK_URL;
+}
 module.exports = {
     'googleAuth': {
-        'clientID': '',
-        'clientSecret': '',
-        'callbackURL': 'http://localhost:3000/auth/google/callback'
-            // 'callbackURL': 'https://app.jarekk1011.usermd.net/auth/google/callback'
+        'clientID': process.env.CLIENT_ID,
+        'clientSecret': process.env.CLIENT_SECRET,
+        'callbackURL': callbackURL
     }
 }
