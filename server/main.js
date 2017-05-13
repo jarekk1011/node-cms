@@ -22,10 +22,12 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const path = require('path');
 const errorHandler = require('errorhandler');
+const dateFilter = require('nunjucks-date-filter');
 // const multer = require('multer');
 const server = http.createServer(app);
 var io = require('socket.io')(server);
 const root = process.cwd();
+
 dotenv.load({ path: '.env.config' });
 
 // styles
@@ -61,12 +63,16 @@ app.use(function(req, res, next) {
 });
 
 
-nunjucks.configure(app.get('views'), {
+
+var envN = nunjucks.configure(app.get('views'), {
     autoescape: true,
     noCache: true,
     watch: true,
     express: app
 });
+// var nunjucksenv = new nunjucks.Environment();
+// console.log(nunjucksenv);
+envN.addFilter('date', dateFilter);
 app.set('view engine', 'nunjucks');
 
 // app.use(multer({ dest: root + '/dist/uploads/' }).any());

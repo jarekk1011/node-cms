@@ -1,16 +1,22 @@
 <div class="container">
+    <h2><a href="./category/{{ category }}">{{ category }}</a></h2>
     <div class="gallery">
-        {% for post in posts %}
-            {% if loop.first  %}
-            {% else %}
-
+        {% for post in posts |sort(attribute='createdAt', reverse=true) %}
+            {% if loop.index <= 5 %}
                 <div class="gallery__item">
-                    <img src="{{url}}/assets/img/image.jpg" alt="Image">
-                    <div><a href="./lifestyle">Photodiary</a></div>
-                    <h2><a href="./post/{{ post.slug }}">{{ post.title }}</a></h2>
-                    {{post.content | safe | truncate(300)}}
+                    <a href="./post/{{ post.slug }}">
+                        <img src="{{url}}/assets/img/image.jpg" alt="Image">
+                        {% if loop.index <= 2 %}
+                            <h3>{{ post.title }}</h3>
+                        {% else %}
+                            <h3 class="h4">{{ post.title }}</h3>
+                        {% endif %}
+                        {{post.content | safe | truncate(120)}}
+                    </a>
+                    <div>
+                        <span>{{post.createdAt | date("DD MMM")}}</span>
+                    </div>
                 </div>
-                
             {% endif %}
         {% endfor %}
     </div>

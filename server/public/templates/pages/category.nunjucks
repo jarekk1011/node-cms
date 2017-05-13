@@ -1,0 +1,4 @@
+{% include '../header/header.nunjucks' %}
+category
+
+{% include '../footer/footer.nunjucks' %}
