@@ -4,7 +4,7 @@
 <section class="top-post">
   <div class="container">
       <header class="top-post__img">
-        <img src="{{url}}/img/image.jpg" alt="Image">
+        <img src="{{url}}/assets/img/image.jpg" alt="Image">
       </header>
       <div class="top-post__main">
         <span class="h4 category">Photodiary</span>

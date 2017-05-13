@@ -20,7 +20,7 @@
      {#<title>{{ PageTitle }}</title>#}
     {#<meta name="keywords" content="{{ keywords }}">#}
     {#<meta name="description" content="{{ description }}">#}
-    <link rel="stylesheet" href="{{ url }}/style/app.css">
+    <link rel="stylesheet" href="{{ url }}/assets/css/style.css">
   </head>
   <body>
     <header class="header">

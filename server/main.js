@@ -28,6 +28,9 @@ var io = require('socket.io')(server);
 const root = process.cwd();
 dotenv.load({ path: '.env.config' });
 
+// styles
+import './public/assets/style/app.scss';
+
 // google analitics
 const ua = require('universal-analytics');
 const visitor = ua('UA-97074565-1');
@@ -45,6 +48,11 @@ io.on('connection', function(client) {
 
 if (process.env.NODE_ENV === 'production') {
     app.use(compression());
+    app.use(express.static(root + '/public'));
+    app.set('views', path.join('public/templates'));
+} else {
+    app.use(express.static(root + '/dist/public'));
+    app.set('views', path.join('dist/public/templates'));
 }
 
 app.use(function(req, res, next) {
@@ -52,7 +60,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.set('views', path.join(root, '/public/templates'));
 
 nunjucks.configure(app.get('views'), {
     autoescape: true,
@@ -66,7 +73,6 @@ app.set('view engine', 'nunjucks');
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(root + '/dist'));
 app.use(bodyParser.json());
 app.set('trust proxy', 1);
 app.use(cors());
@@ -110,7 +116,11 @@ mongoose.connection.on('connected', () => console.log('mongo connected'));
 
 
 //----- ROUTES-------
-app.get('/admin*', (req, res, next) => res.sendFile(root + '/dist/admin.html'));
+if (process.env.NODE_ENV === 'production') {
+    app.get('/admin*', (req, res, next) => res.sendFile(root + '/public/admin.html'));
+} else {
+    app.get('/admin*', (req, res, next) => res.sendFile(root + '/dist/public/admin.html'));
+}
 // admin routes
 app.use('/api/admin', require('./routes/admin.routes'));
 app.use('/', require('./routes/auth.routes'));
