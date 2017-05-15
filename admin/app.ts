@@ -17,10 +17,10 @@ import 'angular-animate';
 import 'angular-toastr';
 
 
-import login from './views/user/login';
-import register from './views/user/register';
+import login from './views/main/login';
+import register from './views/main/register';
 
-import user from './views/user/UserSettings';
+import user from './views/main/UserSettings';
 // ADMIN
 import AdminHeading from './components/heading/heading.component';
 import AdminNavigation from './components/navigation/navigation.component';
@@ -28,10 +28,9 @@ import ChatComponent from './components/chat/chat.component';
 
 import ChatView from './views/chat';
 import dashboard from './views/dashboard';
-import postList from './views/postsList';
-import post from './views/post';
+import post from './views/posts';
 import settings from './views/settings';
-import userslist from './views/usersList';
+import users from './views/users';
 
 import UserService from './services/user.service';
 import RestService from './services/rest.service';
@@ -49,7 +48,6 @@ const MODULE_NAME = 'admin';
 
 angular.module(MODULE_NAME, [
   uirouter,
-  // ngCookies,
   dashboard,
   ChatComponent,
   AdminHeading,
@@ -58,11 +56,9 @@ angular.module(MODULE_NAME, [
   user,
   register,
   post,
+  users,
   ChatView,
   settings,
-  postList,
-  userslist,
-  'ngQuill',
   'ngMaterial',
   'toastr',
   'ngResource',

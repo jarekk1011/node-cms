@@ -1,6 +1,6 @@
 {% include '../header/header.nunjucks' %}
 
-{% for category in ['lifestyle', 'photodiary', 'music', 'travel'] %}
+{% for category in categories %}
   <section>
     {% include '../partials/block.nunjucks' %}
   </section>

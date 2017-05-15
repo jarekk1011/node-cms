@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var bcrypt = require('bcrypt');
 var slugHero = require('mongoose-slug-hero');
 
-// set up a mongoose model
 var PostSchema = new Schema({
     title: {
         type: String
@@ -27,13 +25,13 @@ var PostSchema = new Schema({
     //   type: Schema.Types.ObjectId,
     //   ref: 'Comment'
     // },
-    // category: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Category'
-    // },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    },
     // tags: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Tag'
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Tag'
     // },
     public: {
         type: Boolean,

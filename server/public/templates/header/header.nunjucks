@@ -30,10 +30,9 @@
         <div clas="row">
           <nav class="">
             <ul>
-              <li><a href="{{url}}/category/lifestyle">Lifestyle</a></li>
-              <li><a href="{{url}}/category/photodiary">Photodiary</a></li>
-              <li><a href="{{url}}/category/music">Music</a></li>
-              <li><a href="{{url}}/category/travel">Travel</a></li>
+              {% for category in categories %}
+                <li><a href="{{url}}/category/{{category.title}}">{{category.title}}</a></li>
+              {% endfor %}
             </ul>
           </nav>
         </div>

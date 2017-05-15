@@ -4,7 +4,7 @@ export default function routes($stateProvider, USER_ROLES) {
   $stateProvider
     .state('postlist', {
       url: '/admin/postlist',
-      template: require('./postList.html'),
+      template: require('./posts.list.html'),
       controller: 'PostListController',
       controllerAs: 'postlist',
       data: {

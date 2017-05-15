@@ -1,0 +1,26 @@
+<div class="d-flex view-wrapper">
+    <ul class="user-list">
+        <li class="user-list__item block-element" ng-repeat="user in UserList">
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    <img src="./img/image.jpg" alt="">
+                </div>
+                <div class="col-12 col-md-9">
+                    <a href="">
+                        <span class="h5">{{ user.name }}</span>
+                    </a>
+                    <p>{{ user.email }}</p>
+                    <p>{{ user.role }}</p>
+                    <div>
+                        <md-button>
+                            <div layout="row">
+                                <span flex>Edit</span>
+                            </div>
+                        </md-button>
+                        <span>{{ user.createdAt | date }}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -104,6 +104,8 @@ app.use(passport.session());
 app.use(flash());
 app.use(expressValidator());
 
+console.log('ENV: ' + process.env.NODE_ENV);
+
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
     mongoose.connect(process.env.MONGODB_URI);

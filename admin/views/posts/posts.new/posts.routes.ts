@@ -2,11 +2,11 @@ routes.$inject = ['$stateProvider', 'USER_ROLES'];
 
 export default function routes($stateProvider, USER_ROLES) {
   $stateProvider
-    .state('settings', {
-      url: '/admin/settings',
-      template: require('./settings.html'),
-      controller: 'SettingsController',
-      controllerAs: 'settings',
+    .state('post', {
+      url: '/admin/post/:id',
+      template: require('./posts.new.html'),
+      controller: 'PostController',
+      controllerAs: 'post',
       data: {
           authorizedRoles: USER_ROLES.all
       }

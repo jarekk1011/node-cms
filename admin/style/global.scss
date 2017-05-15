@@ -4,17 +4,17 @@
 @import '../../node_modules/angular-material/angular-material.css';
 @import '../../node_modules/quill/dist/quill.snow.css';
 @import '../../node_modules/angular-toastr/dist/angular-toastr.css';
-@import './variables.scss';
+@import './variables';
 //components
-@import "../components/heading/heading.scss";
-@import "../components/navigation/navigation.scss";
-@import '../views/user/login/login.scss';
-@import "../views/usersList/style.scss";
-@import "../views/dashboard/style.scss";
-@import "../views/chat/chat.scss";
-@import "../views/settings/settings.scss";
+@import "../components/heading/heading";
+@import "../components/navigation/navigation";
+@import '../views/main/login/login';
+@import "../views/dashboard/style";
+@import "../views/chat/chat";
+@import "../views/settings/index";
+@import "../views/users/index";
+@import "../views/posts/index";
 // POST
-@import '../views/post/post.scss';
 body {
     margin: 0;
     padding: 0;

@@ -26,6 +26,7 @@ class PostController {
         let PostData = {};
         PostData.title = req.body.title;
         PostData.content = req.body.content;
+        PostData.updatedBy = req.user._id;
         if (req.body.public) {
             PostData.public = req.body.public;
         }
@@ -67,24 +68,15 @@ class PostController {
         }
         // ----- Create post
     create(req, res) {
-            // if (!req.user) {
-            // 	return res.send(401);
-            // }
-            // console.log(req.body);
-
             var post = req.body;
-            // console.log(req.body.title);
             if (post == null || post.title == '' || post.editor == '') {
                 return res.sendStatus(400);
             }
 
             var postEntry = new Post();
             postEntry.title = post.title;
-            console.log(post);
-            // postEntry.tags = post.tags.split(',');
-            // postEntry.is_published = post.is_published;
             postEntry.content = post.content;
-
+            postEntry.createdBy = req.user._id;
             postEntry.save(function(err) {
                 if (err) {
                     console.log(err);

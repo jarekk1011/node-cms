@@ -40,5 +40,31 @@ export default class restService {
   showMessages() {
     return this.$http.get(`${this.API_ENDPOINT.url}/chat`);
   }
+  // Categories
+  getCategory(ID) {
+    return this.$http.get(`${this.API_ENDPOINT.url}/category/${ID}`);
+  }
+  addCategory(data) {
+    return this.$http.post(`${this.API_ENDPOINT.url}/category`, data);
+  }
+  updateCategory(ID, data) {
+    return this.$http.put(`${this.API_ENDPOINT.url}/category/${ID}`, data);
+  }
+  listCategory() {
+    return this.$http.get(`${this.API_ENDPOINT.url}/category-list`);
+  }
+  // Tags
+  getTag(ID) {
+    return this.$http.get(`${this.API_ENDPOINT.url}/tag/${ID}`);
+  }
+  addTag(data) {
+    return this.$http.post(`${this.API_ENDPOINT.url}/tag`, data);
+  }
+  updateTag(ID, data) {
+    return this.$http.put(`${this.API_ENDPOINT.url}/tag/${ID}`, data);
+  }
+  listTags() {
+    return this.$http.get(`${this.API_ENDPOINT.url}/tag-list`);
+  }
 }
 restService.$$ngIsClass = true;

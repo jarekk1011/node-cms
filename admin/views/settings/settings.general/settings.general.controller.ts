@@ -1,4 +1,4 @@
-export default class SettingsController {
+export default class SettingsGeneralController {
   constructor ($scope) {
     $scope.toppings = [
       { name: 'Pepperoni', wanted: true },
@@ -8,4 +8,4 @@ export default class SettingsController {
     ];
   }
 }
-SettingsController.$$ngIsClass = true;
+SettingsGeneralController.$$ngIsClass = true;

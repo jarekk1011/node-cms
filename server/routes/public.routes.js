@@ -2,23 +2,31 @@
 const PostController = require('../controllers/PostController.js');
 const express = require('express');
 const Post = require('../models/post.js');
+const Category = require('../models/category.js');
 
 
 module.exports = (function() {
     let PublicRoute = express.Router();
 
     PublicRoute.get('/', function(req, res) {
-        Post.find(function(err, data) {
-            res.render('pages/index', { posts: data })
-        });
+        Post.find()
+            .populate('category')
+            .exec(function(err, data) {
+                Category.find(function(err, categorydata) {
+                    res.render('pages/index', { posts: data, categories: categorydata });
+                });
+            });
+
     });
 
     PublicRoute.get('/category/:name', (req, res) => {
         //TO DO -- check if category exists
-        res.render(`pages/category-${req.params.name}`, function(err) {
-            if (err) {
-                return res.render('pages/category');
-            }
+        Category.find(function(err, categorydata) {
+            res.render(`pages/category-${req.params.name}`, function(err) {
+                if (err) {
+                    return res.render('pages/category', { categories: categorydata });
+                }
+            });
         });
     });
 

@@ -1,34 +1,27 @@
 'use strict'
-const PostController = require('../controllers/PostController.js');
 const express = require('express');
 const MessageModel = require('../models/message');
 var fs = require('fs');
 var mongoose = require('mongoose');
 // var multiparty = require('connect-multiparty')();
 // Router
-const controllers = {};
 var Post = require('../models/post.js');
 
 
-controllers.user = require('../controllers/UserController.js');
-var ChatController = require('../controllers/ChatController');
+const ChatController = require('../controllers/ChatController');
 const UserController = require('../controllers/UserController.js');
+const PostController = require('../controllers/PostController.js');
+const CategoryController = require('../controllers/CategoryController.js');
+const TagController = require('../controllers/TagController.js');
 
 
-// PostController = new PostController();
-// console.log(PostController);
-
-const API_AUTHENTICATION = controllers.user.authenticate;
+const API_AUTHENTICATION = UserController.authenticate;
 
 
 module.exports = (function() {
     let admin = express.Router();
-    // admin.get('/checksession', (req, res, next) => {
-    //     // console.log(req.user);
-    //     res.json(req.user);
-    // });
 
-    admin.post('/signup', controllers.user.create);
+    admin.post('/signup', UserController.create);
     admin.get('/auth', function(req, res) {
         // console.log()
         if (!req.isAuthenticated()) {
@@ -37,24 +30,19 @@ module.exports = (function() {
         res.send(req.isAuthenticated() ? req.user : '0');
     });
 
-    admin.post('/logout', controllers.user.postLogout);
+    admin.post('/logout', UserController.postLogout);
 
-    admin.post('/login', controllers.user.postLogin);
+    admin.post('/login', UserController.postLogin);
 
-    admin.get('/listusers', API_AUTHENTICATION, controllers.user.GetUsersList);
+    admin.get('/listusers', API_AUTHENTICATION, UserController.GetUsersList);
     // View messages to and from authenticated user
     admin.get('/chat', API_AUTHENTICATION, ChatController.getConversations);
 
     // Retrieve single conversation
     admin.get('/chat/:conversationId', API_AUTHENTICATION, ChatController.getConversation);
-
-    // Send reply in conversation
     admin.post('/chat/:conversationId', API_AUTHENTICATION, ChatController.sendReply);
-
-    // Start new conversation
     admin.post('/chat/new/:recipient', API_AUTHENTICATION, ChatController.newConversation);
 
-    // passportConfig.isAuthenticated,
 
     admin.get('/memberinfo', API_AUTHENTICATION, UserController.auth);
 
@@ -75,6 +63,17 @@ module.exports = (function() {
     // Read post
     admin.get('/post/:id', API_AUTHENTICATION, PostController.getPostBySlug);
     admin.put('/post/:id', API_AUTHENTICATION, PostController.update);
+    // Categories
+    admin.post('/category', API_AUTHENTICATION, CategoryController.create);
+    admin.get('/category/:id', API_AUTHENTICATION, CategoryController.getById);
+    admin.get('/category-list', API_AUTHENTICATION, CategoryController.listAll);
+    admin.put('/category/:id', API_AUTHENTICATION, CategoryController.update);
+    // Tags
+    admin.post('/tag', API_AUTHENTICATION, TagController.create);
+    admin.get('/tag/:id', API_AUTHENTICATION, TagController.getById);
+    admin.get('/tag-list', API_AUTHENTICATION, TagController.listAll);
+    admin.put('/tag/:id', API_AUTHENTICATION, TagController.update);
+
 
 
 
