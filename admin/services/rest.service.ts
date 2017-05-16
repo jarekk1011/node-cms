@@ -53,6 +53,9 @@ export default class restService {
   listCategory() {
     return this.$http.get(`${this.API_ENDPOINT.url}/category-list`);
   }
+  deleteCategory(ID) {
+    return this.$http.delete(`${this.API_ENDPOINT.url}/category/${ID}`);
+  }
   // Tags
   getTag(ID) {
     return this.$http.get(`${this.API_ENDPOINT.url}/tag/${ID}`);
@@ -65,6 +68,9 @@ export default class restService {
   }
   listTags() {
     return this.$http.get(`${this.API_ENDPOINT.url}/tag-list`);
+  }
+  deleteTag(ID) {
+     return this.$http.delete(`${this.API_ENDPOINT.url}/tag/${ID}`);
   }
 }
 restService.$$ngIsClass = true;

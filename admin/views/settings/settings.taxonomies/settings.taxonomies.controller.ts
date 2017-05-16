@@ -27,12 +27,12 @@ export default class SettingsTaxonomiesController {
                 $mdDialog.hide();
             }
             $scope.addcategory = function() {
-                RestService.addCategory($scope.category).then(function(res){
+                RestService.addCategory($scope.category).then(function(res) {
                     $mdDialog.hide();
                 });
             }
             $scope.addtag = function() {
-                RestService.addTag($scope.tag).then(function(res){
+                RestService.addTag($scope.tag).then(function(res) {
                     $mdDialog.hide();
                 });
             }
@@ -68,6 +68,14 @@ export default class SettingsTaxonomiesController {
     this.RestService = RestService;
     $scope.categories = categories.data;
     $scope.tags = tags.data;
+  }
+  deleteTag(id) {
+    this.RestService.deleteTag(id).then(function(){
+    });
+  }
+  deleteCategory(id) {
+    this.RestService.deleteCategory(id).then(function(){
+    });
   }
 
 }

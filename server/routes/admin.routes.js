@@ -57,22 +57,25 @@ module.exports = (function() {
     // });
 
 
-    // Create Post
+    // Posts
     admin.post('/post', API_AUTHENTICATION, PostController.create);
     admin.get('/post', API_AUTHENTICATION, PostController.listAll);
-    // Read post
     admin.get('/post/:id', API_AUTHENTICATION, PostController.getPostBySlug);
     admin.put('/post/:id', API_AUTHENTICATION, PostController.update);
+    admin.delete('/post/:id', API_AUTHENTICATION, PostController.delete);
     // Categories
     admin.post('/category', API_AUTHENTICATION, CategoryController.create);
     admin.get('/category/:id', API_AUTHENTICATION, CategoryController.getById);
     admin.get('/category-list', API_AUTHENTICATION, CategoryController.listAll);
     admin.put('/category/:id', API_AUTHENTICATION, CategoryController.update);
+    admin.delete('/category/:id', API_AUTHENTICATION, CategoryController.delete);
+
     // Tags
     admin.post('/tag', API_AUTHENTICATION, TagController.create);
     admin.get('/tag/:id', API_AUTHENTICATION, TagController.getById);
     admin.get('/tag-list', API_AUTHENTICATION, TagController.listAll);
     admin.put('/tag/:id', API_AUTHENTICATION, TagController.update);
+    admin.delete('/tag/:id', API_AUTHENTICATION, TagController.delete);
 
 
 

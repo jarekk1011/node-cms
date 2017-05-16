@@ -62,7 +62,20 @@ class CategoryController {
         });
     }
     delete(req, res) {
+        Category.findOneAndRemove({ _id: req.params.id }, function(err, item) {
+            if (err) {
+                return res.sendStatus(400);
+            }
+            if (item) {
+                item.remove(function(err) {
+                    if (err) throw err;
+                    res.status(200).json({ success: true, msg: "Item deleted!" });
+                });
+            } else {
+                throw err;
 
+            }
+        });
     }
 }
 module.exports = new CategoryController();
