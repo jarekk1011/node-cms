@@ -4,10 +4,10 @@ const Conversation = require('../models/conversation'),
     User = require('../models/user');
 
 module.exports.getConversations = function(req, res, next) {
-    // Only return one message from each conversation to display as snippet
     Conversation.find({ participants: req.user._id })
         .select('_id')
         .exec(function(err, conversations) {
+            // console.log(conversations);
             if (err) {
                 res.send({ error: err });
                 return next(err);
@@ -16,6 +16,7 @@ module.exports.getConversations = function(req, res, next) {
             // Set up empty array to hold conversations + most recent message
             let fullConversations = [];
             conversations.forEach(function(conversation) {
+                // console.log(conversation);
                 Message.find({ 'conversationId': conversation._id })
                     .sort('-createdAt')
                     .limit(1)
@@ -24,6 +25,7 @@ module.exports.getConversations = function(req, res, next) {
                         select: "name"
                     })
                     .exec(function(err, message) {
+                        console.log(message);
                         if (err) {
                             res.send({ error: err });
                             return next(err);

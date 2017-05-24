@@ -7,20 +7,11 @@ export default class ChatController {
     this.$scope = $scope;
     this.$http = $http;
     // this.socket = socket;
-    $http.get(API_ENDPOINT.url + '/chat').then(function(result) {
-      $scope.memberinfo = result.data.user;
-      $scope.messages = result.data.data;
-      // console.log('dd');
-      // console.log(result.data.user);
-    }, function(err){
-      $state.go('login');
+    RestService.getConversations().then(function(res){
+      // console.log(res);
+      $scope.conversations = res.data.conversations;
     });
 
-    RestService.usersListAll().then(function(data) {
-        $scope.users = data.data;
-        // console.log(data.data);
-        // console.log($scope);
-    });
 
     // // $scope.messageTo = '';
     //   this.socket.on('connect', function(data) {
@@ -86,13 +77,12 @@ export default class ChatController {
 
 
   $scope.messages = [];
-  }
+}
 
-  destroySession() {
-    this.UserService.logout();
-  }
+loadConversation(conversationId) {
 
- 
+}
+
   // console.log($scop)
 
 }

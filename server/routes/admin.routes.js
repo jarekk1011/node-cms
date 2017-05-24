@@ -36,7 +36,7 @@ module.exports = (function() {
 
     admin.get('/listusers', API_AUTHENTICATION, UserController.GetUsersList);
     // View messages to and from authenticated user
-    admin.get('/chat', API_AUTHENTICATION, ChatController.getConversations);
+    admin.get('/conversations', API_AUTHENTICATION, ChatController.getConversations);
 
     // Retrieve single conversation
     admin.get('/chat/:conversationId', API_AUTHENTICATION, ChatController.getConversation);

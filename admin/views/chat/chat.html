@@ -9,11 +9,14 @@
       </div>
     </header>
 
+
     <ul class="users__list">
-      <li class="users__list__item" ng-repeat="user in users">
-        <button type="button" name="button">
-          <span ng-if="user.name">{{user.name}}</span>
-          <span ng-if="!user.name">{{user.google.name}}</span>
+      <li class="users__list__item" ng-repeat="con in conversations">
+        <button ng-click="chat.loadConversation(con[0].conversationId)" type="button" name="button">
+          <span ng-repeat="single in con">
+            <div>{{single.author}}</div>
+            <div>{{single.body}}</div>
+          </span>
         </button>
       </li>
     </ul>

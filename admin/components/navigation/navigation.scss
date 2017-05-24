@@ -7,6 +7,7 @@
     background-color: $white;
     height: 100%;
     // padding-top: 20px;
+    z-index: 2;
     .logo {
         height: 55px;
         // border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -41,14 +42,11 @@
             // margin-bottom: 0px;
             color: $gray;
             font-size: 14px;
+            position: relative;
             i {
                 font-size: 14px;
                 width: 30px;
                 text-align: center;
-            }
-            ul {
-                display: none;
-                list-style: none;
             }
             .tab {
                 padding-left: 20px;
@@ -62,17 +60,69 @@
                 color: inherit;
                 height: 50px;
                 text-decoration: none;
-                transition: ease-in-out 0.3s all;
+                transition: ease-in-out 0.2s background-color;
                 &:hover {
                     background-color: #f5f7f9;
                 }
+                .fa-angle-down {
+                    float: right;
+                }
+            }
+            ul {
+                list-style: none;
+                display: none;
+            }
+            &:hover {
+                >.tab {
+                    background-color: #f5f7f9;
+                }
+                // ul {
+                //     display: block;
+                //     opacity: 1;
+                //     position: absolute;
+                //     left: 100%;
+                //     top: 0;
+                //     background-color: $white;
+                //     // z-index: 9;
+                //     padding: 0;
+                //     width: 200px;
+                //     box-shadow: 0px 0px 10px 3px rgba(230, 232, 237, 0.35);
+                //     li {
+                //         a {
+                //             // display: block;
+                //             // padding: 10px;
+                //             // color: $gray;
+                //             // transition: ease-in-out 0.3s all;
+                //             // &:hover {
+                //             //     text-decoration: none;
+                //             //     background-color: #f5f7f9;
+                //             // }
+                //         }
+                //         // margin-bottom: 10px;
+                //     }
+                // }
             }
             &.is--open {
+                >.tab {
+                    background-color: #f5f7f9;
+                }
                 ul {
                     display: block;
-                }
-                .tab {
-                    background-color: #f5f7f9;
+                    position: relative;
+                    padding: 0;
+                    left: 0;
+                    width: 100%;
+                    font-size: 12px;
+                    box-shadow: none;
+                    a.tab {
+                        padding-top: 10px;
+                        height: 35px;
+                        padding-left: 50px;
+                        // font-size: 14px;
+                        i {
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
             &__sublist {

@@ -37,8 +37,8 @@ export default class restService {
   DeleteUser() {
 
   }
-  showMessages() {
-    return this.$http.get(`${this.API_ENDPOINT.url}/chat`);
+  getConversations() {
+    return this.$http.get(`${this.API_ENDPOINT.url}/conversations`);
   }
   // Categories
   getCategory(ID) {
