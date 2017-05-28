@@ -1,4 +1,4 @@
-export default function($rootScope, $state, UserService, AUTH_EVENTS) {
+export default function($rootScope, $state, $stateParams, UserService, AUTH_EVENTS) {
 
   $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
 
@@ -32,6 +32,8 @@ export default function($rootScope, $state, UserService, AUTH_EVENTS) {
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $rootScope.state = $state.current.name;
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
   });
 
 }

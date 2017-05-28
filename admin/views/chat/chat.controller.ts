@@ -6,11 +6,17 @@ export default class ChatController {
     // this.socket = io(API_ENDPOINT.server);
     this.$scope = $scope;
     this.$http = $http;
+    this.RestService = RestService;
     // this.socket = socket;
-    RestService.getConversations().then(function(res){
-      // console.log(res);
-      $scope.conversations = res.data.conversations;
+    RestService.getConversations().then(function(res) {
+      if (res.data.success === false) {
+        console.log(res.data);
+        $scope.conversations = res.data;
+      } else {
+        $scope.conversations = res.data.conversations;
+      }
     });
+    console.log($scope);
 
 
     // // $scope.messageTo = '';
@@ -80,8 +86,13 @@ export default class ChatController {
 }
 
 loadConversation(conversationId) {
-
+  this.RestService.getConversation(conversationId).then(function(res) {
+    console.log(res);
+  });
 }
+
+// newConversation() {
+// }
 
   // console.log($scop)
 

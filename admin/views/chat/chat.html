@@ -1,50 +1,45 @@
 <div class="d-flex view-wrapper chat-view">
-  <aside class="col-4 col-xl-2 users">
-    <!-- chat -->
-    <header class="users__header">
-      <div class="row">
-        <div class="col">
-          <button class="new" type="button" name="button">NEW</button>
-        </div>
-      </div>
-    </header>
+    <aside class="col-4 col-xl-2 users">
+        <!-- chat -->
+        <header class="users__header">
+            <div class="row">
+                <div class="col">
+                    <button class="new" type="button" ng-if="state == 'chat' || state == 'chat.start'" ui-sref="chat.new">NEW</button>
+                    <button class="new" type="button" ng-if="state == 'chat.new'" ui-sref="chat.start">START</button>
+                </div>
+            </div>
+        </header>
+        <span ng-if="conversations.msg">{{conversations.msg}}</span>
 
+        <ul ng-if="!conversations.msg" class="users__list">
+            <li class="users__list__item" ng-repeat="con in conversations">
+                <button ng-click="chat.loadConversation(con[0].conversationId)" type="button" name="button">
+                <span ng-repeat="single in con">
+                  <div>{{single.author}}</div>
+                  <div>{{single.body}}</div>
+                </span>
+              </button>
+            </li>
+        </ul>
 
-    <ul class="users__list">
-      <li class="users__list__item" ng-repeat="con in conversations">
-        <button ng-click="chat.loadConversation(con[0].conversationId)" type="button" name="button">
-          <span ng-repeat="single in con">
-            <div>{{single.author}}</div>
-            <div>{{single.body}}</div>
-          </span>
-        </button>
-      </li>
-    </ul>
+    </aside>
 
-  </aside>
-
-  <section class="col-8 col-xl-10 chat" ng-cloak>
-
-    <!-- <div> -->
-    <header class="chat__header">
-      <span class="h4">Jan Kowalski</span>
-    </header>
-    <ul class="chat__main" scroll-glue>
-      <li ng-repeat="message in messages">
-        <div>
-          <h4>{{message.name}}</h4>
-          <p>{{message.message}}</p>
-          <p>{{message.date | date:'shortTime'}}</p>
-        </div>
-      </li>
-    </ul>
-    <footer class="chat__footer">
-      <form class="" ng-submit="chat.sendMessage()">
-        <!-- <div class=""> -->
-          <input type="text" ng-model="messageTo" aria-label="Message" placeholder="Message...">
-          <button class="send" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        <!-- </div> -->
-      </form>
-    </footer>
-  </section>
+    <section class="col-8 col-xl-10 chat" ng-cloak ui-view>
+        <header class="chat__header"><span>Send to all</span></header>
+        <ul class="chat__main" scroll-glue>
+            <li ng-repeat="message in messages">
+                <div>
+                    <h4>{{message.name}}</h4>
+                    <p>{{message.message}}</p>
+                    <p>{{message.date | date:'shortTime'}}</p>
+                </div>
+            </li>
+        </ul>
+        <footer class="chat__footer">
+            <form class="" ng-submit="chat.sendMessage()">
+                <input type="text" ng-model="messageTo" aria-label="Message" placeholder="Message...">
+                <button class="send" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+        </footer>
+    </section>
 </div>

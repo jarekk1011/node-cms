@@ -12,6 +12,9 @@ module.exports.getConversations = function(req, res, next) {
                 res.send({ error: err });
                 return next(err);
             }
+            if (conversations.length == 0) {
+                return res.status(200).json({ success: false, msg: 'no conversations' });
+            }
 
             // Set up empty array to hold conversations + most recent message
             let fullConversations = [];
@@ -32,7 +35,7 @@ module.exports.getConversations = function(req, res, next) {
                         }
                         fullConversations.push(message);
                         if (fullConversations.length === conversations.length) {
-                            return res.status(200).json({ conversations: fullConversations });
+                            return res.status(200).json({ success: true, conversations: fullConversations });
                         }
                     });
             });

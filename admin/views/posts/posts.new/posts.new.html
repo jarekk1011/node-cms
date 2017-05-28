@@ -1,13 +1,13 @@
 <div class="d-flex view-wrapper">
-  <form class="form-single">
-    <md-input-container md-no-float class="md-block">
-        <label>Post Title</label>
-         <input ng-model="post.title">
-    </md-input-container>
+    <form class="form-single">
+        <md-input-container md-no-float class="md-block">
+            <label>Post Title</label>
+            <input ng-model="post.title">
+        </md-input-container>
 
-    <ng-quill-editor ng-model="post.content" class="post-wysiwyg"></ng-quill-editor>
+        <ng-quill-editor ng-model="post.content" class="post-wysiwyg"></ng-quill-editor>
 
-    <button ng-if="post_id" ng-click="post.update()" name="button">Update</button>
-    <button ng-if="!post_id" ng-click="post.create()" name="button">Create</button>
-  </form>
+        <button ng-if="post_id" ng-click="post.update()" name="button">Update</button>
+        <button ng-if="!post_id" ng-click="post.create()" name="button">Create</button>
+    </form>
 </div>

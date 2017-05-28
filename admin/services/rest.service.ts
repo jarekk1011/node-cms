@@ -37,8 +37,12 @@ export default class restService {
   DeleteUser() {
 
   }
+  // CHAT
   getConversations() {
     return this.$http.get(`${this.API_ENDPOINT.url}/conversations`);
+  }
+  getConversation(ID){
+    return this.$http.get(`${this.API_ENDPOINT.url}/chat/${ID}`);
   }
   // Categories
   getCategory(ID) {
