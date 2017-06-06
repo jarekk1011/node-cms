@@ -1,7 +1,7 @@
 'use strict'
 const User = require('../models/user');
 const passport = require('passport');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 
 exports.create = function(req, res, next) {

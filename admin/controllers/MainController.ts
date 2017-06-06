@@ -2,6 +2,7 @@
 export default function($scope, $rootScope, toastr, $state, UserService, AUTH_EVENTS, API_ENDPOINT, USER_ROLES, $mdSidenav, socket) {
   let setCurrentUser = function(){
     $scope.currentUser = $rootScope.currentUser;
+    $state.go('dashboard');
   }
   let showNotAuthorized = function() {
       toastr.error('You are not Authorized');

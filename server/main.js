@@ -23,9 +23,11 @@ const cors = require('cors');
 const path = require('path');
 const errorHandler = require('errorhandler');
 const dateFilter = require('nunjucks-date-filter');
+const sharedsession = require("express-socket.io-session");
 // const multer = require('multer');
 const server = http.createServer(app);
-var io = require('socket.io')(server);
+const io = require('socket.io')(server);
+require('./config/socket.js')(io);
 const root = process.cwd();
 
 dotenv.load({ path: '.env.config' });
@@ -39,14 +41,6 @@ const visitor = ua('UA-97074565-1');
 visitor.pageview("/").send();
 
 const passportConfig = require('./config/passport');
-
-io.on('connection', function(client) {
-    io.sockets.emit('users-length', Object.keys(io.sockets.connected).length);
-    client.on('disconnect', function() {
-        io.sockets.emit('users-length', Object.keys(io.sockets.connected).length);
-    });
-    console.log('socket connected');
-});
 
 if (process.env.NODE_ENV === 'production') {
     app.use(compression());
@@ -62,8 +56,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-
-
 var envN = nunjucks.configure(app.get('views'), {
     autoescape: true,
     noCache: true,
@@ -77,13 +69,7 @@ app.set('view engine', 'nunjucks');
 
 // app.use(multer({ dest: root + '/dist/uploads/' }).any());
 // get our request parameters
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(bodyParser.json());
-app.set('trust proxy', 1);
-app.use(cors());
-app.use(cookieParser(process.env.SESSION_SECRET))
-app.use(session({
+const sessionMiddleware = session({
     resave: true,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
@@ -98,13 +84,24 @@ app.use(session({
         ephemeral: true,
         maxAge: 300000 //5min
     }
-}));
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+app.set('trust proxy', 1);
+app.use(cors());
+app.use(cookieParser(process.env.SESSION_SECRET))
+app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(expressValidator());
 
-console.log('ENV: ' + process.env.NODE_ENV);
+io.use(function(socket, next) {
+    sessionMiddleware(socket.request, socket.request.res, next);
+});
+
 
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
@@ -141,3 +138,5 @@ app.get('*', (req, res) => res.status(404).render('404'));
 // console.log(io);
 app.use(errorHandler());
 server.listen(PORT, () => console.log(`Listen on port: https://localhost:${PORT}`));
+
+module.exports = app;

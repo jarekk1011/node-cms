@@ -1,6 +1,6 @@
 .navigation {
     // height: 100%;
-    position: fixed;
+    // position: fixed;
     left: 0;
     top: 0;
     width: 220px;
@@ -8,31 +8,32 @@
     height: 100%;
     // padding-top: 20px;
     z-index: 2;
-    .logo {
-        height: 55px;
-        // border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        background-color: #303f9f;
-        position: relative;
-        a {
-            display: block;
-            height: 100%;
-            text-align: center;
-            font-size: 24px;
-            color: #fefefe;
-            padding-top: 10px;
-            &:hover {
-                text-decoration: none;
-                color: $white;
-            }
-            i {
-                padding-top: 10px;
-                color: #fefefe;
-            }
-        }
-    }
+    // .logo {
+    //     height: 55px;
+    //     // border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    //     background-color: #303f9f;
+    //     position: relative;
+    //     a {
+    //         display: block;
+    //         height: 100%;
+    //         text-align: center;
+    //         font-size: 24px;
+    //         color: #fefefe;
+    //         padding-top: 10px;
+    //         &:hover {
+    //             text-decoration: none;
+    //             color: $white;
+    //         }
+    //         i {
+    //             padding-top: 10px;
+    //             color: #fefefe;
+    //         }
+    //     }
+    // }
     &__list {
         list-style: none;
         padding: 0;
+        margin: 0;
         width: 220px;
         height: 100%;
         box-shadow: 10px -10px 10px -5px rgba(230, 232, 237, 0.35);

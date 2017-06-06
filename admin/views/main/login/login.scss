@@ -1,7 +1,12 @@
 body.is--login {
     background-color: $blue;
-    .view {
+    .view,
+    .ui-view,
+    .login-section,
+    .register-section {
         height: 100%;
+        align-items: center;
+        display: flex;
     }
 }
 
@@ -21,9 +26,9 @@ body.is--login {
     margin: 0 auto;
     background-color: #fff;
     padding: 50px;
-    top: 50%;
+    // top: 50%;
     position: absolute;
-    transform: translateY(-50%);
+    // transform: translateY(-50%);
     left: 0;
     right: 0;
     margin: 0 auto;

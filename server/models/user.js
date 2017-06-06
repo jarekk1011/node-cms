@@ -27,7 +27,10 @@ const userSchema = new mongoose.Schema({
         id: String,
         token: String,
     },
-    isActive: Boolean,
+    isActive: {
+        type: Boolean,
+        default: false
+    },
     image: String
 }, {
     timestamps: true

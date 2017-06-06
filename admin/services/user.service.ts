@@ -1,21 +1,23 @@
 import angular from 'angular';
-export default function UserService($http, $state, $q, toastr, $rootScope, AUTH_EVENTS, API_ENDPOINT) {
+export default function UserService($http, $state, socket, $q, toastr, $rootScope, AUTH_EVENTS, API_ENDPOINT) {
 
 let UserService = {};
 
   UserService.login = function(credentials) {
     $http.post(API_ENDPOINT.url + '/login', credentials).then(function(data) {
       let user = data.data.user;
-      toastr.success(data.data.msg);
-      if (user) {
-        $rootScope.currentUser = user;
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-        $state.go('dashboard');
-      if (user.email === credentials.email) {
-
-        } else {
+        if (!!user) {
+          console.log('assdfa')
+          toastr.success(data.data.msg);
+          $rootScope.currentUser = user;
+          $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+        if (user.email === credentials.email) {
+        }
+        else {
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         }
+      } else {
+        toastr.error(data.data.msg);
       }
     },
     function(result) {

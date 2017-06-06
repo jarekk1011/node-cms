@@ -11,7 +11,8 @@
                         <span>{{ user.name }}</span>
                     </div>
                     <div class="col-1">
-                        <span class="user-active-info"></span>
+                        <span ng-class="{'is--active': user.isActive}" class="user-active-info"></span>
+
                     </div>
                 </div>
             </md-button>

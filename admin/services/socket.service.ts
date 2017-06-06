@@ -1,5 +1,5 @@
 import {API_ENDPOINT} from '../constans';
-import * as io from "socket.io-client";
+import * as io from 'socket.io-client';
 
 export default function ($rootScope) {
   let socket = io.connect(API_ENDPOINT.server);

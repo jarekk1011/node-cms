@@ -12,7 +12,10 @@
             background: #3498db;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            {
+                #height: 100vh;
+                #
+            }
         }
         
         .loader,
@@ -68,15 +71,15 @@
 </head>
 
 <body ng-cloak ng-controller="MainController" ng-class="{'is--login' : state == 'login'  || state == 'register'}">
-    <div class="wrapper">
-
-        <div ng-if="UserService.isAuthenticated() && state != 'login' && state != 'register'" class="navigation">
+    <!--<div class="wrapper">-->
+    <heading ng-if="UserService.isAuthenticated() && state != 'login' && state != 'register'" class="heading"></heading>
+    <div class="main-wrapper">
+        <nav ng-if="UserService.isAuthenticated() && state != 'login' && state != 'register'" class="navigation">
             <navigation></navigation>
-        </div>
+        </nav>
         <main class="main">
-            <heading ng-if="UserService.isAuthenticated() && state != 'login' && state != 'register'" class="heading"></heading>
             <div class="view">
-                <div ng-cloak class="ui-view">
+                <div class="ui-view">
                     <div class="loader">
                     </div>
                 </div>
@@ -84,6 +87,7 @@
             </div>
         </main>
     </div>
+    <!--</div>-->
 </body>
 
 </html>
