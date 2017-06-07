@@ -1,47 +1,10 @@
-<!--<header class="ctrl__header">
-    <md-chips ng-model="selectedTags" md-autocomplete-snap>
-        <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.name" placeholder="What are you looking for ?">
-            <span md-highlight-text="searchText">{{item.name}}</span>
-        </md-autocomplete>
-        <md-chip-template>
-            <span>
-          {{$chip.name || $chip}}
-        </span>
-        </md-chip-template>
-    </md-chips>
-</header>
-
-<md-menu-content class="ctrl__main" scroll-glue>
-    <md-menu-item ng-repeat="user in users">
-        <md-button aria-label="user.name" aria-hidden="true">
-            <div class="row no-gutters">
-                <div class="col-1">
-                    <img ng-if="user.image" src="" alt="">
-                    <i ng-if="!user.image" class="user-icon fa fa-user-circle-o" ng-class="{'is--active' : user.isActive == true}" aria-hidden="true"></i>
-                </div>
-                <div class="col-10">
-                    <span>{{ user.name }}</span>
-                </div>
-                <div class="col-1">
-                    <span class="user-active-info"></span>
-                </div>
-            </div>
-        </md-button>
-    </md-menu-item>
-</md-menu-content>
-<footer class="ctrl__footer">
-    <form class="" ng-submit="ctrl.sendMessage()">
-
-    </form>
-</footer>-->
-
-<md-content class="md-padding autocomplete" layout="column">
+<md-content class="autocomplete" layout="column">
     <md-contact-chips ng-model="ctrl.contacts" md-contacts="ctrl.querySearch($query)" md-contact-name="name" md-contact-image="image" md-contact-email="email" md-require-match="true" md-highlight-flags="i" filter-selected="ctrl.filterSelected" placeholder="To">
     </md-contact-chips>
     <md-list class="fixedRows">
         <md-subheader class="md-no-sticky">Contacts</md-subheader>
         <md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.allContacts" ng-if="ctrl.contacts.indexOf(contact) < 0">
-            <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+            <img ng-src="./assets/img/user.jpg" class="md-avatar" alt="{{contact.name}}" />
             <div class="md-list-item-text compact">
                 <h3>{{contact.name}}</h3>
                 <p>{{contact.email}}</p>

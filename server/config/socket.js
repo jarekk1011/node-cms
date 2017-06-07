@@ -1,13 +1,14 @@
 import User from '../models/user.js';
 module.exports = function(io) {
-    io.sockets.on('connection', function(socket) {
-        let ID = socket.request.session.passport;
+    io.on('connect', function(client) {
+        let ID = client.request.session.passport;
         if (!!ID) {
             ID = ID.user;
             io.emit('active-user', ID);
         }
 
-        socket.on('disconnect', function() {
+        client.on('disconnect', function() {
+            console.log('disconect user ' + ID);
             io.sockets.emit('disconnect-user', ID);
         });
 

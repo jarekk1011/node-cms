@@ -1,11 +1,11 @@
 <div class="view-wrapper">
-    <md-input-container md-no-float class="md-block">
+    <!--<md-input-container md-no-float class="md-block">
         <md-button ui-sref="post" class="float-right">
             <div layout="row">
                 <span flex>Add New Post</span>
             </div>
         </md-button>
-    </md-input-container>
+    </md-input-container>-->
 
 
     <md-input-container md-no-float class="md-block">
@@ -17,7 +17,7 @@
         <li class="post-list__item block-element" ng-repeat="posty in postsList | filter:searchText">
             <div class="row">
                 <div class="col-12 ">
-                    <img src="./img/image.jpg" alt="">
+                    <img src="./assets/img/image.jpg" alt="">
                 </div>
                 <div class="col-12">
                     <a href="" ui-sref="post({id: posty._id})">

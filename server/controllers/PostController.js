@@ -24,7 +24,9 @@ class PostController {
             return res.status(400).json({ success: false, msg: 'Server error try again!' });
         }
         let PostData = {};
+        console.log(req.body);
         PostData.title = req.body.title;
+        PostData.category = req.body.category;
         PostData.content = req.body.content;
         PostData.updatedBy = req.user._id;
         if (req.body.public) {
@@ -75,6 +77,7 @@ class PostController {
 
             var postEntry = new Post();
             postEntry.title = post.title;
+            postEntry.category = post.category;
             postEntry.content = post.content;
             postEntry.createdBy = req.user._id;
             postEntry.save(function(err) {

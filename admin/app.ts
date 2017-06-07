@@ -67,7 +67,6 @@ angular.module(MODULE_NAME, [
   .factory('AuthInterceptor', AuthInterceptor)
   .service('UserService', UserService)
   .service('RestService', RestService)
-  .factory('socket', SocketService)
   .controller('MainController', MainController)
   .run( ['$rootScope', '$state', '$stateParams',
   function ($rootScope,   $state,   $stateParams) {
@@ -86,6 +85,7 @@ angular.module(MODULE_NAME, [
     }
   ]);
 }])
+.factory('socket', SocketService)
 .filter('NoHtml', function() {
     return function(text)
     {

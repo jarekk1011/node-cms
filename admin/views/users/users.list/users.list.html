@@ -1,24 +1,24 @@
-<div class="d-flex view-wrapper">
+<div class="d-flex view-wrapper row">
     <ul class="user-list">
-        <li class="user-list__item block-element" ng-repeat="user in UserList">
-            <div class="row">
-                <div class="col-12 col-md-3">
-                    <img src="./img/image.jpg" alt="">
+        <li class="user-list__item" ng-repeat="user in UserList">
+            <div class="block-element">
+                <div class="image-block col-12 col-md-4">
+                    <img src="./assets/img/user.jpg" alt="">
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-8">
                     <a href="">
                         <span class="h5">{{ user.name }}</span>
                     </a>
                     <p>{{ user.email }}</p>
                     <p>{{ user.role }}</p>
-                    <div>
+                    <!--<div>
                         <md-button>
                             <div layout="row">
                                 <span flex>Edit</span>
                             </div>
                         </md-button>
                         <span>{{ user.createdAt | date }}</span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </li>

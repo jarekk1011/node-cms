@@ -2,7 +2,15 @@ import {API_ENDPOINT} from '../constans';
 import * as io from 'socket.io-client';
 
 export default function ($rootScope) {
-  let socket = io.connect(API_ENDPOINT.server);
+  let socket;
+  console.log($rootScope);
+  if (!!$rootScope.currentUser) {
+    console.log('loggedin');
+    socket = io.connect(API_ENDPOINT.server);
+  } else {
+    console.log('not loged')
+    socket = io.connect();
+  }
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {

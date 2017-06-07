@@ -4,6 +4,14 @@
             <label>Post Title</label>
             <input ng-model="post.title">
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Category</label>
+            <md-select ng-model="post.category">
+              <md-option ng-repeat="category in categories" value="{{category._id}}">
+                {{category.title}}
+              </md-option>
+            </md-select>
+          </md-input-container>
 
         <ng-quill-editor ng-model="post.content" class="post-wysiwyg"></ng-quill-editor>
 
