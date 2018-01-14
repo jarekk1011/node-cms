@@ -1,7 +1,6 @@
 routes.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider', 'USER_ROLES'];
 
 export default function routes($stateProvider, $locationProvider, $urlRouterProvider, USER_ROLES) {
-  $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/admin');
   $stateProvider
     .state('dashboard', {
@@ -21,4 +20,5 @@ export default function routes($stateProvider, $locationProvider, $urlRouterProv
         }
       }
     });
+    $locationProvider.html5Mode(true);
 }

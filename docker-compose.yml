@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  admin: 
+    build: ./admin
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./admin:/admin
+      - /admin/node_modules
+    command: "sh -c 'npm install && npm run dev'"
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    command: "sh -c 'npm install && npm run dev'"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://database:27017/nodecms
+    links:
+      - database
+    # networks:
+      # - sdnet
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017" # specify port forewarding
+    # networks:
+    #  - sdnet
+# networks:
+  # sdnet:
+    # driver: "bridge"
+volumes:
+  database:

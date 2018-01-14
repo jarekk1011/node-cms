@@ -1,5 +1,5 @@
 // import io from 'socket.io';
-export default function($scope, $rootScope, toastr, $state, UserService, AUTH_EVENTS, API_ENDPOINT, USER_ROLES, $mdSidenav, socket) {
+export default function($scope, $rootScope, toastr, $state, UserService, AUTH_EVENTS, API_ENDPOINT, USER_ROLES, $mdSidenav) {
   let setCurrentUser = function(){
     $scope.currentUser = $rootScope.currentUser;
     $state.go('dashboard');
@@ -19,15 +19,15 @@ export default function($scope, $rootScope, toastr, $state, UserService, AUTH_EV
       };
   }
 
-  socket.on('connect', function() {
-    socket.on('users-length', function(data) {
-      if (!!data) {
-        $scope.activeUsers = data;
-      } else {
-        $scope.activeUsers = 0;
-      }
-      });
-  });
+  // socket.on('connect', function() {
+  //   socket.on('users-length', function(data) {
+  //     if (!!data) {
+  //       $scope.activeUsers = data;
+  //     } else {
+  //       $scope.activeUsers = 0;
+  //     }
+  //     });
+  // });
 
 
 

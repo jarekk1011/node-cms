@@ -13,7 +13,7 @@ $font-size-h3: 1.5rem !default;
 $font-size-h4: 1.3rem !default;
 $font-size-h5: 1.20rem !default;
 $font-size-h6: 1rem !default;
-@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "constans";
 // components
 @import 'heading';

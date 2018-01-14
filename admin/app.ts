@@ -76,7 +76,7 @@ angular.module(MODULE_NAME, [
 .constant('API_ENDPOINT', API_ENDPOINT)
 .constant('AUTH_EVENTS', AUTH_EVENTS)
 .constant('USER_ROLES', USER_ROLES)
-.config(['$qProvider', '$httpProvider', function ($qProvider, $httpProvider) {
+.config(['$qProvider', '$httpProvider', '$locationProvider', function ($qProvider, $httpProvider, $locationProvider) {
     $qProvider.errorOnUnhandledRejections(false);
     $httpProvider.interceptors.push([
     '$injector',
@@ -84,6 +84,7 @@ angular.module(MODULE_NAME, [
       return $injector.get('AuthInterceptor');
     }
   ]);
+  $locationProvider.html5Mode(false);
 }])
 .factory('socket', SocketService)
 .filter('NoHtml', function() {

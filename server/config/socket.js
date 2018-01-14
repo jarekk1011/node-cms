@@ -1,4 +1,4 @@
-import User from '../models/user.js';
+const User = require('../models/user.js');
 module.exports = function(io) {
     io.on('connect', function(client) {
         let ID = client.request.session.passport;

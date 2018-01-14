@@ -1,16 +1,16 @@
 import {API_ENDPOINT} from '../constans';
 import * as io from 'socket.io-client';
 
-export default function ($rootScope) {
+export default function ($rootScope, $state) {
   let socket;
-  console.log($rootScope);
-  if (!!$rootScope.currentUser) {
-    console.log('loggedin');
+  // console.log($state.current.name)
+  // if ($state.current.name === 'login' || $state.current.name === 'register') {
+  //   return false;
+  // }
+
     socket = io.connect(API_ENDPOINT.server);
-  } else {
-    console.log('not loged')
-    socket = io.connect();
-  }
+  // socket = io.connect(API_ENDPOINT.server);
+
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {

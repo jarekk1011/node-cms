@@ -30,7 +30,7 @@ module.exports = (function() {
     // the callback after google has authenticated the user
     auth.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/admin/dashboard',
+            successRedirect: 'http://0.0.0.0:4200/#!/admin/dashboard',
             failureRedirect: '/'
         }));
 

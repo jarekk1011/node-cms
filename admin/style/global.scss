@@ -1,9 +1,9 @@
 /* styles in src/style directory are applied to the whole page */
 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import '../../node_modules/angular-material/angular-material.css';
-@import '../../node_modules/quill/dist/quill.snow.css';
-@import '../../node_modules/angular-toastr/dist/angular-toastr.css';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import '../node_modules/angular-material/angular-material.css';
+@import '../node_modules/quill/dist/quill.snow.css';
+@import '../node_modules/angular-toastr/dist/angular-toastr.css';
 @import './variables';
 //components
 @import "../components/heading/heading";

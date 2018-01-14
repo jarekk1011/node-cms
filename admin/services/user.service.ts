@@ -7,7 +7,7 @@ let UserService = {};
     $http.post(API_ENDPOINT.url + '/login', credentials).then(function(data) {
       let user = data.data.user;
         if (!!user) {
-          console.log('assdfa')
+          // console.log('assdfa');
           toastr.success(data.data.msg);
           $rootScope.currentUser = user;
           $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

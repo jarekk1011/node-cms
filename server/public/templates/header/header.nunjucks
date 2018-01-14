@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta name="description" content="{{ description }}">
     <title>{{ PageTitle }}</title>
-    <link rel="stylesheet" href="{{ url }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ url }}/assets/styles.css">
   </head>
   <body>
     <header class="header">

@@ -33,7 +33,7 @@ export default function ChatNewController(users) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(contact) {
             let name = contact.name.toLowerCase();
-            return (name.indexOf(lowercaseQuery) != -1);
+            return (name.indexOf(lowercaseQuery) !== -1);
         };
     }
 

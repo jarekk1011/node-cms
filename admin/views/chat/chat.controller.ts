@@ -2,7 +2,7 @@
 
 
 export default class ChatController {
-  constructor($scope, $http, $state, API_ENDPOINT, RestService, socket) {
+  constructor($scope, $http, $state, API_ENDPOINT, RestService) {
     // this.socket = io(API_ENDPOINT.server);
     this.$scope = $scope;
     this.$http = $http;
@@ -10,13 +10,13 @@ export default class ChatController {
     // this.socket = socket;
     RestService.getConversations().then(function(res) {
       if (res.data.success === false) {
-        console.log(res.data);
+        // console.log(res.data);
         $scope.conversations = res.data;
       } else {
         $scope.conversations = res.data.conversations;
       }
     });
-    console.log($scope);
+    // console.log($scope);
 
 
     // // $scope.messageTo = '';
@@ -87,7 +87,7 @@ export default class ChatController {
 
 loadConversation(conversationId) {
   this.RestService.getConversation(conversationId).then(function(res) {
-    console.log(res);
+    // console.log(res);
   });
 }
 

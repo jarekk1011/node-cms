@@ -1,5 +1,8 @@
 'use strict'
 // Dependencies
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -24,32 +27,31 @@ const path = require('path');
 const errorHandler = require('errorhandler');
 const dateFilter = require('nunjucks-date-filter');
 const sharedsession = require("express-socket.io-session");
+const webpackConfig = require('./webpack.config');
+const compiler = webpack(webpackConfig);
 // const multer = require('multer');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 require('./config/socket.js')(io);
 const root = process.cwd();
-
 dotenv.load({ path: '.env.config' });
 
 // styles
-import './public/assets/style/app.scss';
+// require('./dist/public/assets/styles.css');
+
 
 // google analitics
 const ua = require('universal-analytics');
 const visitor = ua('UA-97074565-1');
 visitor.pageview("/").send();
-
 const passportConfig = require('./config/passport');
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(compression());
-    app.use(express.static(root + '/public'));
-    app.set('views', path.join('public/templates'));
-} else {
-    app.use(express.static(root + '/dist/public'));
-    app.set('views', path.join('dist/public/templates'));
 }
+app.set('views', path.join('public/templates'));
+app.use(express.static(process.env.NODE_ENV ? './dist/public' : './public'));
 
 app.use(function(req, res, next) {
     res.locals.url = req.protocol + '://' + req.get('host');
@@ -105,7 +107,7 @@ io.use(function(socket, next) {
 
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
-    mongoose.connect(process.env.MONGODB_URI);
+    mongoose.connect(process.env.MONGO_URI);
 } else {
     mongoose.connect(process.env.MONGODB_URI_PRODUCTION);
 }
@@ -124,7 +126,7 @@ mongoose.connection.on('connected', () => console.log('mongo connected'));
 if (process.env.NODE_ENV === 'production') {
     app.get('/admin*', (req, res, next) => res.sendFile(root + '/public/admin.html'));
 } else {
-    app.get('/admin*', (req, res, next) => res.sendFile(root + '/dist/public/admin.html'));
+    app.get('/admin*', (req, res, next) => res.sendFile(root+'/../admin/admin.html'));
 }
 // admin routes
 app.use('/api/admin', require('./routes/admin.routes'));
@@ -132,9 +134,14 @@ app.use('/', require('./routes/auth.routes'));
 // public routes
 app.use('/', require('./routes/public.routes'));
 // 404
-app.get('*', (req, res) => res.status(404).render('404'));
+// app.get('*', (req, res) => res.status(404).render('404'));
 
-
+app.use(webpackDevMiddleware(compiler, {  
+    publicPath: '/',
+    stats: false,
+    // filename: 'app.js'
+}))
+app.use(webpackHotMiddleware(compiler));
 // console.log(io);
 app.use(errorHandler());
 server.listen(PORT, () => console.log(`Listen on port: https://localhost:${PORT}`));
